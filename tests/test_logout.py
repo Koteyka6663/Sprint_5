@@ -1,3 +1,4 @@
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -19,8 +20,8 @@ class TestLogout:
         driver.find_element(By.XPATH, locators.login_email_input).send_keys(data.EMAIL)
         driver.find_element(By.XPATH, locators.login_password_input).send_keys(data.PASSWORD)
         WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(
-            (By.CSS_SELECTOR, locators.login_button)))
-        driver.find_element(By.CSS_SELECTOR, locators.login_button).click()
+            (By.XPATH, locators.login_button)))
+        driver.find_element(By.XPATH, locators.login_button).click()
         WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(
             (By.XPATH, locators.personal_account_button)))
         driver.find_element(By.XPATH, locators.personal_account_button).click()
@@ -31,5 +32,3 @@ class TestLogout:
             (By.XPATH, locators.login_heading)))
         element = driver.find_element(By.XPATH, locators.login_heading)
         assert element.text == "Вход"
-
-        driver.quit()

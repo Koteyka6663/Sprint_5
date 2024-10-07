@@ -13,5 +13,3 @@ def generate_email():
     mail = ''.join(random.sample(simbols, random.randint(5, 64)))
     return mail + "@" + domain
 
-print(generate_email())
-

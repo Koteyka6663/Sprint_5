@@ -20,15 +20,12 @@ class TestSwitchToPersonalAccount:
         driver.find_element(By.XPATH, locators.login_email_input).send_keys(data.EMAIL)
         driver.find_element(By.XPATH, locators.login_password_input).send_keys(data.PASSWORD)
         WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(
-            (By.CSS_SELECTOR, locators.login_button)))
-        driver.find_element(By.CSS_SELECTOR, locators.login_button).click()
+            (By.XPATH, locators.login_button)))
+        driver.find_element(By.XPATH, locators.login_button).click()
         driver.find_element(By.XPATH, locators.personal_account_button).click()
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
-            (By.XPATH, "//p[@class='Account_text__fZAIn text text_type_main-default']")))
-        element = driver.find_element(By.XPATH, "//p[@class='Account_text__fZAIn text text_type_main-default']")
+            (By.XPATH, locators.text_in_profile)))
+
+        element = driver.find_element(By.XPATH, locators.text_in_profile)
+
         assert element.text == "В этом разделе вы можете изменить свои персональные данные"
-        driver.quit()
-
-
-
-
